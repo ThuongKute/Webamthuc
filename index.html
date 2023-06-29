@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/vku.jpg">
+    <title>Trang chu</title>
+
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css">
+    <!-- link css bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- link file css -->
+    <link rel="stylesheet" href="css/index.css">
+
+
+</head>
+
+<body>
+    <!--start header -->
+    <section class="header">
+        <a href="#" class="logo"><i class="fas fa-utensils"></i>food.</a>
+
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#popular">Phổ biến</a>
+            <a href="#gallery">Menu</a>
+            <a href="#list">Danh sách</a>
+            <a href="#contact">Phản hồi</a>
+            <a href="#blogs">blogs</a>
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="menu-btn"><i class="fas fa-user" id="login-btn"></i></div>
+
+    </section>
+
+    <!-- end header -->
+
+    <!-- login -->
+    <div class="login-form-container">
+
+        <i class="fa-solid fa-xmark" id="login-form-close"></i>
+        <form action="">
+            <h3>Login</h3>
+            <input type="email" class="box" placeholder="Nhập email" required>
+            <input type="password" class="box" placeholder="Nhập mật khẩu" required>
+            <input type="submit" value="login now" class="btn">
+            <button class="btn bg-white" style="color: black;"><img src="img/google.png" style="width: 30px;"
+                    class="me-2"><small>Đăng nhập bằng Google</small></button>
+            <input type="checkbox" id="remember">
+            <label for="remember">remember me</label>
+            <p>forget password? <a href="#">click here</a></p>
+            <p>don't have an account? <a href="#" id="register-btn">register now</a></p>
+        </form>
+
+    </div>
+    <!-- ends login -->
+
+    <!-- Register - Đăng ký -->
+    <div class="register-form-container">
+
+        <i class="fa-solid fa-xmark" id="register-form-close"></i>
+        <form action="">
+            <h3>Đăng ký</h3>
+            <div class="row">
+                <label for="" class="col-sm-1"><i class="fa-regular fa-user"></i></label>
+                <input type="text" placeholder="Họ" class="col-sm-5 box" required>
+                <input type="text" placeholder="Tên" class="col-sm-5 box" required>
+            </div>
+            <div class="row">
+                <label for="gt" class="col-sm-5"><i class="fa-solid fa-child-reaching"></i><input type="radio" id="gt"
+                        name="gt"></label>
+                <label for="gt" class="col-sm-5"><i class="fas fa-light fa-child-dress"></i><input type="radio" id="gt"
+                        name="gt"></label>
+            </div>
+            <div class="row">
+                <label class="col-sm-1"><i class="fa-solid fa-calendar-days"></i></label>
+                <input type="date" class="col-sm-10 box" required>
+            </div>
+            <div class="row">
+                <label class="col-sm-1"><i class="fa-regular fa-envelope"></i></label>
+                <input type="email" class="col-sm-10 box" placeholder="Nhập email" required>
+            </div>
+            <div class="row">
+                <label class="col-sm-1"><i class="fas fa-regular fa-key"></i></i></label>
+                <input type="password" class="col-sm-10 box" placeholder="Nhập mật khẩu" required>
+            </div>
+
+            <input type="checkbox" id="remember">
+            <label for="remember">Tuân thủ các nguyên tắc và điều khoản sử dụng</label>
+            <input type="submit" value="Đăng ký" class="btn">
+            <p>Đã có tài khoản<a href="#" id="login-btn">Đăng nhập</a></p>
+        </form>
+
+    </div>
+    <!-- ends register -->
+
+
+    <!-- home selection start -->
+    <section class="home" id="home">
+        <div class="swiper home-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide" style="background: url(img/slide1.jpg) no-repeat;">
+                    <div class="content">
+                        <span>mùa hè nắng nóng</span>
+                        <h3>Giải nhiệt cùng chúng tôi!</h3>
+                        <form action="" id="search-box">
+                            <input type="text" id="search-text" placeholder="Bạn muốn tìm kiếm gì?">
+                            <button id="search-btn" class="fas fa-solid fa-magnifying-glass"></button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide" style="background: url(img/slide2.jpg) no-repeat;">
+                    <div class="content">
+                        <span>Giải nhiệt cùng</span>
+                        <h3>Đa dạng món ăn</h3>
+                        <a href="#" class="btn">Tham quan</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide" style="background: url(img/slide3.jpg) no-repeat;">
+                    <div class="content">
+                        <span>Giải nhiệt cùng</span>
+                        <h3>Đồ uống mát lạnh</h3>
+                        <a href="#" class="btn">Tham quan</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide" style="background: url(img/slide4.jpg) no-repeat;">
+                    <div class="content">
+                        <span>Đảm bảo dinh dưỡng</span>
+                        <h3>Nguyên liệu tươi ngon</h3>
+                        <a href="#" class="btn">Tham quan</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- about section starts -->
+    <section class="about" id="about">
+
+        <div class="video">
+            <!-- <img src="img/about1.png" alt=""> -->
+            <video autoplay loop muted plays-inline class="back-video">
+                <source src="video/videoabout.mp4">
+            </video>
+        </div>
+
+        <div class="content">
+            <h3 class="title">Chào mừng bạn đến với chúng tôi</h3>
+            <p>Đến với chúng tôi các bạn sẽ được trải nghiệm các món ăn, thức uống ngon lành. Và đặc biệt là các món ăn
+                giải nhiệt cho mùa hè này.
+                Khám phá thêm về chúng tôi ngay thôi!
+            </p>
+            <a href="#" class="btn">Xem thêm</a>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="img/about2.png" alt="">
+                    <h3>Chất lượng thức ăn tuyệt vời</h3>
+                </div>
+                <div class="col-sm-4">
+                    <img src="img/about3.png" alt="">
+                    <h3>Thức ăn & đồ uống đa dạng</h3>
+                </div>
+                <div class="col-sm-4">
+                    <img src="img/about4.png" alt="">
+                    <h3>Các món ăn đảm bảo sức khỏe</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- about section ends -->
+
+    <!-- popular section starts -->
+
+    <section class="popular" id="popular">
+        <div class="heading">
+            <span>Các món phổ biến</span>
+            <h3>Gợi ý món ăn phổ biến cho mùa hè này</h3>
+        </div>
+
+        <div class="swiper food-slider">
+
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide" data-name="food-1">
+                    <img src="img/food1.png" alt="">
+                    <h3>Canh chua cá lóc</h3>
+                    <div class="price">$39.99</div>
+                </div>
+
+                <div class="swiper-slide slide" data-name="food-2">
+                    <img src="img/food2.png" alt="">
+                    <h3>Canh chuối um lươn</h3>
+                    <div class="price">$39.99</div>
+                </div>
+
+                <div class="swiper-slide slide" data-name="food-3">
+                    <img src="img/kem1.png" alt="">
+                    <h3>Kem xoài mát lạnh</h3>
+                    <div class="price">$14.9</div>
+                </div>
+
+                <div class="swiper-slide slide" data-name="food-4">
+                    <img src="img/drink1.png" alt="">
+                    <h3>Nước ép cà chua healthy</h3>
+                    <div class="price">$12</div>
+                </div>
+
+                <div class="swiper-slide slide" data-name="food-5">
+                    <img src="img/kem2.png" alt="">
+                    <h3>Kem dâu tây</h3>
+                    <div class="price">$19.99</div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- popular section ends -->
+
+    <!-- (con cua popular)-->
+
+    <section class="food-preview-container">
+
+        <div id="close-preview" class="fas fa-times"></div>
+
+        <div class="food-preview " data-target="food-1">
+            <img src="img/food1.png" alt="">
+            <h3>Canh chua cá lóc</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Là một trong những món ăn được yêu thích nhất cho mùa hè này</p>
+            <div class="price">$39.99</div>
+            <a href="" class="btn">Buy now</a>
+        </div>
+
+        <div class="food-preview" data-target="food-2">
+            <img src="img/food2.png" alt="">
+            <h3>Canh chuối um lươn</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Vị bùi bùi mềm mềm của chuối cộng thêm dai dai của lươn làm món ăn thêm ngon</p>
+            <div class="price">$39.99</div>
+            <a href="" class="btn">Buy now</a>
+        </div>
+
+        <div class="food-preview" data-target="food-3">
+            <img src="img/kem1.png" alt="">
+            <h3>Kem xoài mát lạnh</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Mùa hè nhất định phải ăn kem rồi</p>
+            <div class="price">$14.9</div>
+            <a href="" class="btn">Buy now</a>
+        </div>
+
+        <div class="food-preview" data-target="food-4">
+            <img src="img/drink1.png" alt="">
+            <h3>Nước ép cà chua healthy</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Vừa giải nhiệt, vừa giữ dáng, vừa đẹp da thì quá là tuyệt vời luôn</p>
+            <div class="price">$12</div>
+            <a href="" class="btn">Buy now</a>
+        </div>
+
+        <div class="food-preview" data-target="food-5">
+            <img src="img/kem2.png" alt="">
+            <h3>Kem dâu tây</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Mùa hè nhất định phải ăn kem thôi</p>
+            <div class="price">$19.99</div>
+            <a href="" class="btn">Buy now</a>
+        </div>
+    </section>
+
+    <!-- (con cua popular) -->
+
+    <!-- gallery section starts -->
+
+    <section class="gallery" id="gallery">
+
+        <div class="heading">
+            <span>Thực đơn</span>
+            <h3>Các loại món ăn có trong thực đơn</h3>
+            <a href="fooddetail.html" class="btn">more</a>
+        </div>
+
+        <div class="gallery-container">
+            <a href="img/gallery1.jpg" class="box">
+                <img src="img/gallery1.jpg" alt="">
+                <div class="icon">
+                    <h4>Khai vị</h4>
+                </div>
+
+            </a>
+
+            <a href="img/gallery2.png" class="box">
+                <img src="img/gallery2.png" alt="">
+                <div class="icon">
+                    <h4>Đa dạng món chính</h4>
+                </div>
+            </a>
+
+            <a href="img/gallery3.png" class="box">
+                <img src="img/gallery3.png" alt="">
+                <div class="icon">
+                    <h4>Canh giải nhiệt</h4>
+                </div>
+            </a>
+
+            <a href="img/gallery4.jpg" class="box">
+                <img src="img/gallery4.jpg" alt="">
+                <div class="icon">
+                    <h4>Kem mát lạnh</h4>
+                </div>
+            </a>
+
+            <a href="img/gallery5.jpg" class="box">
+                <img src="img/gallery5.jpg" alt="">
+                <div class="icon">
+                    <h4>Soup</h4>
+                </div>
+            </a>
+
+            <a href="img/gallery6.jpg" class="box">
+                <img src="img/gallery6.jpg" alt="">
+                <div class="icon">
+                    <h4>Sinh tố trái cây</h4>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- gallery section ends -->
+
+    <!-- Danh sách list section starts -->
+
+    <section class="list" id="list">
+        <div class="heading">
+            <span>Danh sách</span>
+            <h3>Danh sách món ăn gợi ý cho các bữa</h3>
+        </div>
+
+        <div class="swiper list-slider">
+
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide">
+                    <h3 class="title">Breafast</h3>
+                    <div class="box-container">
+                        <div class="box">
+                            <div class="info">
+                                <h3>morning breakfast</h3>
+                                <p>Bánh bao + sữa đậu nành</p>
+                            </div>
+
+                            <div class="price">$15</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>morning breakfast</h3>
+                                <p>Phở gà, phở bò</p>
+                            </div>
+
+                            <div class="price">$20</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>morning breakfast</h3>
+                                <p>Bún gạo lứt</p>
+                            </div>
+
+                            <div class="price">$50</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>morning breakfast</h3>
+                                <p>Bánh mì đen + sữa chua</p>
+                            </div>
+
+                            <div class="price">$40</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>morning breakfast</h3>
+                                <p>Ngũ cốc nguyên hạt + sữa</p>
+                            </div>
+
+                            <div class="price">$40</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>morning breakfast</h3>
+                                <p>Sinh tố trái cây</p>
+                            </div>
+
+                            <div class="price">$10</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <h3 class="title">Lunch</h3>
+                    <div class="box-container">
+                        <div class="box">
+                            <div class="info">
+                                <h3>delicous lunch</h3>
+                                <p>Gỏi hải sản</p>
+                            </div>
+
+                            <div class="price">$60</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>delicous lunch</h3>
+                                <p>Cơm sườn, cơm tấm</p>
+                            </div>
+
+                            <div class="price">$60</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>delicous lunch</h3>
+                                <p>Canh chua cá lóc</p>
+                            </div>
+
+                            <div class="price">$30</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>delicous lunch</h3>
+                                <p>Canh khổ qua nhồi thịt</p>
+                            </div>
+
+                            <div class="price">$30</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>delicous lunch</h3>
+                                <p>Trái cây tươi</p>
+                            </div>
+
+                            <div class="price">$20</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <h3 class="title">dinnner</h3>
+                    <div class="box-container">
+                        <div class="box">
+                            <div class="info">
+                                <h3>good dinner</h3>
+                                <p>Salad rau củ</p>
+                            </div>
+
+                            <div class="price">$20</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>good dinner</h3>
+                                <p>Mỳ quảng</p>
+                            </div>
+
+                            <div class="price">$30</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>good dinner</h3>
+                                <p>Bún chả</p>
+                            </div>
+
+                            <div class="price">$40</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>good dinner</h3>
+                                <p>Canh bí đỏ sườn non</p>
+                            </div>
+
+                            <div class="price">$30</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <h3 class="title">drinks</h3>
+                    <div class="box-container">
+                        <div class="box">
+                            <div class="info">
+                                <h3>cold drinks</h3>
+                                <p>Nước ép tráicây</p>
+                            </div>
+
+                            <div class="price">$10</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>cold drinks</h3>
+                                <p>Kem</p>
+                            </div>
+
+                            <div class="price">$20</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>cold drinks</h3>
+                                <p>Chè trôi nước</p>
+                            </div>
+
+                            <div class="price">$15</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>cold drinks</h3>
+                                <p>Nước rau má</p>
+                            </div>
+
+                            <div class="price">$15</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>cold drinks</h3>
+                                <p>Trà atiso</p>
+                            </div>
+
+                            <div class="price">$10</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>cold drinks</h3>
+                                <p>Nước bí đao</p>
+                            </div>
+
+                            <div class="price">$7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <h3 class="title">dessert</h3>
+                    <div class="box-container">
+                        <div class="box">
+                            <div class="info">
+                                <h3>sweet dessets</h3>
+                                <p>Bánh flan</p>
+                            </div>
+
+                            <div class="price">$10</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>sweet dessets</h3>
+                                <p>Rau câu</p>
+                            </div>
+
+                            <div class="price">$10</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>sweet dessets</h3>
+                                <p>Trái cây dầm sữa chua</p>
+                            </div>
+
+                            <div class="price">$15</div>
+                        </div>
+
+                        <div class="box">
+                            <div class="info">
+                                <h3>sweet dessets</h3>
+                                <p>Sữa chua nha đam</p>
+                            </div>
+
+                            <div class="price">$20</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
+
+        </div>
+    </section>
+
+    <!-- Danh sách list section ends -->
+
+    <!--Phản hồi starts -->
+    <section class="contact" id="contact">
+        <div class="heading">
+            <span>Liên hệ</span>
+            <h3>nếu có thắc mắc hãy liên hệ chúng tôi</h3>
+        </div>
+
+        <form action="">
+            <div class="box-container">
+                <div class="box">
+                    <div class="inputBox">
+                        <span>Tên của bạn</span>
+                        <input type="text" placeholder="Nhập xong">
+                    </div>
+                    <div class="inputBox">
+                        <span>Số điện thoại</span>
+                        <input type="number" placeholder="Nhập sdt">
+                    </div>
+                    <div class="inputBox">
+                        <span>Email</span>
+                        <input type="email" placeholder="Địa chỉ email">
+                    </div>
+
+                </div>
+                <div class="box">
+                    <div class="inputBox">
+                        <span>Địa chỉ</span>
+                        <textarea name="" placeholder="enter your address" id="" cols="30" rows="4"></textarea>
+                    </div>
+                    <div class="inputBox">
+                        <span>Vấn đề trao đổi</span>
+                        <textarea name="" placeholder="Nhập vấn đề cần gửi" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <input type="submit" value="Gửi" class="btn">
+                </div>
+            </div>
+        </form>
+    </section>
+    <!-- Phản hồi section ends -->
+
+    <!-- blogs section starts -->
+
+    <section class="blogs" id="blogs">
+
+        <div class="heading">
+            <span>Our Blogs</span>
+            <h3>the best news</h3>
+        </div>
+
+        <div class="swiper blogs-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="img/kem2.png" alt="">
+                        <span>Ice cream</span>
+                    </div>
+                    <div class="content">
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-calendar"></i>1/6/2023</a>
+                            <a href="#"><i class="fas fa-user"></i> by Thuong</a>
+                        </div>
+                        <a href="#" class="title">customer's feedback</a>
+                        <p>favorite food for international children's Day</p>
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="img/blogs2.jpg" alt="">
+                        <span>Chè giải nhiệt</span>
+                    </div>
+                    <div class="content">
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-calendar"></i> 5/4/2023</a>
+                            <a href="#"><i class="fas fa-user"></i> by admin</a>
+                        </div>
+                        <a href="#" class="title">Tổng hợp các món chè</a>
+                        <p>Các món chè mát lạnh luôn là sự lựa chọn của mọi người trong thời tiết nắng nóng này</p>
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="img/blogs3.jpg" alt="">
+                        <span>Thực đơn cho gia đình bạn</span>
+                    </div>
+                    <div class="content">
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-calendar"></i> 8/3/2023</a>
+                            <a href="#"><i class="fas fa-user"></i> by Thuong</a>
+                        </div>
+                        <a href="#" class="title">Gợi ý các món ăn mùa hè</a>
+                        <p>bạn đau đầu không biết các món ăn vừa tốt cho sức khỏe vừa giải nhiệt mùa hè. Hãy tham khảo
+                            các gợi ý sau!</p>
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="img/blogs4.jpg" alt="">
+                        <span>Nước ép</span>
+                    </div>
+                    <div class="content">
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-calendar"></i> 8/3/2023</a>
+                            <a href="#"><i class="fas fa-user"></i> by admin</a>
+                        </div>
+                        <a href="#" class="title">This summer's cooling queen</a>
+                        <p>combo giải nhiệt & healthy cho mùa hè nắng nóng gọi tên NƯỚC ÉP TRÁI CÂY</p>
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="img/blogs5.jpg" alt="">
+                        <span>Canh chua cá lóc</span>
+                    </div>
+                    <div class="content">
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-calendar"></i> 8/6/2023</a>
+                            <a href="#"><i class="fas fa-user"></i> by Thuong</a>
+                        </div>
+                        <a href="#" class="title">món canh quốc dân</a>
+                        <p>các nguyên liệu chuẩn bị cho món canh người người đều thích, nhà nhà đều thích</p>
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="img/blogs6.jpg" alt="">
+                        <span>Ăn kiêng</span>
+                    </div>
+                    <div class="content">
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-calendar"></i> 8/3/2023</a>
+                            <a href="#"><i class="fas fa-user"></i> by admin</a>
+                        </div>
+                        <a href="#" class="title">Thực phẩm cho người ăn kiêng</a>
+                        <p>bạn muốn ăn các món ăn vừa ngon vừa giải nhiệt mùa hè nhưng bạn lại đang trong quá trình ăn
+                            kiêng. Hãy xem các nguyên tắc chọn nguyên liệu này nhé!</p>
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- blogs section ends -->
+
+    <!-- footer sectin starts -->
+
+    <section class="footer" id="footer">
+        <div class="icons-container">
+
+            <div class="icons">
+                <i class="fas fa-clock"></i>
+                <h3>Mở cửa</h3>
+                <p>07:00am to 10:00pm</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-phone"></i>
+                <h3>Điện thoại</h3>
+                <p>+84 123456789</p>
+                <p>0987-654-321</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-envelope"></i>
+                <h3>email</h3>
+                <p>thuongtt.22it@vku.udn.vn</p>
+                <p>truongthuongqb1008@gmail.com</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Địa chỉ</h3>
+                <p>Trường Đại học CNTT&TT Việt - Hàn</p>
+                <p>470 Trần Đại Nghĩa, Khu Đô Thị Đại Học, Quận Ngũ Hành Sơn, Tp Đà Nẵng.</p>
+            </div>
+        </div>
+
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+        </div>
+
+        <div class="credit">
+            created by <span> Thuong designer</span> | all right reserved!
+        </div>
+    </section>
+
+
+
+    <!-- footer sectin ends -->
+
+
+
+
+
+    <!--link file js  -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+
+    <!-- js bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="js/index.js"></script>
+
+    <script>
+        lightGallery(document.querySelector('.gallery .gallery-container'));
+    </script>
+</body>
+
+</html>

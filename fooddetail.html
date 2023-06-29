@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/vku.jpg">
+    <title>Food Detail</title>
+
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css">
+    <!-- link css bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- link file css -->
+    <link rel="stylesheet" href="css/fooddetail.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+
+<style>
+    .gallery .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 2rem;
+    }
+
+    .gallery .gallery-container .box {
+        height: 20rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gallery .gallery-container .box img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .gallery .gallery-container .box .icon {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+        background: var(--dark-bg);
+    }
+
+    .gallery .gallery-container .box .icon h4 {
+        font-size: 2rem;
+        color: var(--white);
+    }
+
+    .gallery .gallery-container .box:hover .icon {
+        display: flex;
+    }
+</style>
+
+<body>
+    <!--start header -->
+    <section class="header">
+        <a href="#" class="logo"><i class="fas fa-utensils"></i>food.</a>
+
+        <nav class="navbar">
+            <a href="indext.jsp"><i class="fas fa-solid fa-house"></i></a>
+            <a href="#gallery">food</a>
+            <a href="#pldrink">Drink</a>
+            <a href="#contact">order</a>
+        </nav>
+
+        <div class="menu-icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="cart" class="fas fa-duotone fa-cart-shopping fa-bounce"></div>
+            <div id="login-btn" class="fas fa-user"></div>
+
+        </div>
+        <!-- search-bar -->
+        <form class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="Bạn muốn tìm gì?">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        Giỏ Hàng
+                    </div>
+                    <span class="close1">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="cart-row">
+                        <span class="cart-item cart-header cart-column">Sản Phẩm</span>
+                        <span class="cart-price cart-header cart-column">Giá</span>
+                        <span class="cart-quantity cart-header cart-column">Số Lượng</span>
+                    </div>
+                    <div class="cart-items">
+
+                    </div>
+                    <div class="cart-total">
+                        <strong class="cart-total-title">Tổng Cộng:</strong>
+                        <span class="cart-total-price">0VNĐ</span>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close-footer">Đóng</button>
+                    <button type="button" class="btn btn-primary order1">Thanh Toán</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- search-bar -->
+        <form class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="Bạn muốn tìm gì?">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
+
+    </section>
+
+    <!-- end header -->
+
+    <!-- login -->
+    <div class="login-form-container">
+
+        <i class="fa-solid fa-xmark" id="login-form-close"></i>
+
+
+
+        <form action="LoginControl" method="post">
+            <h3>Login</h3>
+            <input type="email" name="username" class="box" placeholder="Nhập email" required />
+            <input type="password" class="box" name="password" placeholder="Nhập mật khẩu" required />
+            <input type="submit" value="Login now" class="btn" />
+
+            <button class="btn bg-white" style="color: black;"><img src="img/google.png" style="width: 30px;"
+                    class="me-2"><small>Đăng nhập bằng Google</small></button>
+            <input type="checkbox" id="remember">
+            <label for="remember">remember me</label>
+            <p>forget password? <a href="#">click here</a></p>
+            <p>don't have an account? <a href="#" id="register-btn">register now</a></p>
+        </form>
+
+
+
+
+
+
+    </div>
+
+    <!-- ends login -->
+
+    <!-- Register -->
+    <div class="register-form-container">
+
+        <i class="fa-solid fa-xmark" id="register-form-close"></i>
+        <form action="LoginControl" method="post">
+            <input type="hidden" name="action" value="register">
+            <h3>Đăng ký</h3>
+            <div class="row">
+                <label for="" class="col-sm-1"><i class="fa-regular fa-user"></i></label>
+
+                <input type="text" placeholder="Họ" name="ho" id="ho" class="col-sm-5 box" required>
+                <input type="text" placeholder="Tên" name="ten" id="ten" class="col-sm-5 box" required>
+            </div>
+            <div class="row">
+                <label for="gt" class="col-sm-5"><i class="fa-solid fa-child-reaching"></i><input type="radio" id="gt"
+                        name="gt" value="Nam"> </label>
+                <label for="gt" class="col-sm-5"><i class="fas fa-light fa-child-dress"></i><input type="radio" id="gt"
+                        name="gt" value="Nu"></label>
+            </div>
+            <div class="row">
+                <label class="col-sm-1"><i class="fa-solid fa-calendar-days"></i></label>
+                <input type="date" class="col-sm-10 box" name="date" id="date" required>
+            </div>
+            <div class="row">
+                <label class="col-sm-1"><i class="fa-regular fa-envelope"></i></label>
+                <input type="email" class="col-sm-10 box" placeholder="Nhập email" name="username" id="username"
+                    required>
+            </div>
+            <div class="row">
+                <label class="col-sm-1"><i class="fas fa-regular fa-key"></i></i></label>
+                <input type="password" name="password" id="password" class="col-sm-10 box" placeholder="Nhập mật khẩu"
+                    required>
+            </div>
+
+            <input type="checkbox" id="remember">
+            <label for="remember">Tuân thủ các nguyên tắc và điều khoản sử dụng</label>
+            <input type="submit" value="Đăng ký" class="btn">
+            <p>Đã có tài khoản<a href="#" id="login-btn">Đăng nhập</a></p>
+        </form>
+
+    </div>
+    <!-- ends register -->
+
+
+    <!-- slide starts -->
+    <div class="swiper slide-fooddetail">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide" style="background-image: url(img/hello2.jpg);">
+                <div class="content">
+                    <form action="" id="search-box">
+                        <input type="text" id="search-text" placeholder="Bạn muốn tìm kiếm gì?">
+                        <button id="search-btn" class="fas fa-solid fa-magnifying-glass"></button>
+                    </form>
+                </div>
+            </div>
+            <div class="swiper-slide slide" style="background-image: url(img/banner2.jpg);">
+                <div class="content">
+                    <span>mùa hè nắng nóng</span>
+                    <h3>Giải nhiệt cùng chúng tôi!</h3>
+                    <form action="" id="search-box">
+                        <input type="text" id="search-text" placeholder="Bạn muốn tìm kiếm gì?">
+                        <button id="search-btn" class="fas fa-solid fa-magnifying-glass"></button>
+                    </form>
+                </div>
+            </div>
+            <div class="swiper-slide slide" style="background-image: url(img/banner3.jpg);">
+                <div class="content">
+                    <span>mùa hè nắng nóng</span>
+                    <h3>Giải nhiệt cùng chúng tôi!</h3>
+                    <form action="" id="search-box">
+                        <input type="text" id="search-text" placeholder="Bạn muốn tìm kiếm gì?">
+                        <button id="search-btn" class="fas fa-solid fa-magnifying-glass"></button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-scrollbar"></div>
+
+    </div>
+
+
+
+    <!-- slide ends -->
+
+    <!-- Phan loai food-->
+    <section class="gallery" id="gallery">
+
+        <div class="heading">
+            <span>Phân loại món ăn</span>
+            <h3>Các loại món ăn có trong thực đơn</h3>
+        </div>
+
+        <div class="gallery-container">
+            <a href="img/gallery1.jpg" class="box">
+                <img src="img/salad.gif" alt="">
+                <div class="icon">
+                    <h4>Khai vị</h4>
+                </div>
+
+            </a>
+
+            <a href="img/gallery2.png" class="box">
+                <img src="img/gallery2.png" alt="">
+                <div class="icon">
+                    <h4>Đa dạng món chính</h4>
+                </div>
+            </a>
+
+            <a href="img/gallery3.png" class="box">
+                <img src="img/gallery3.png" alt="">
+                <div class="icon">
+                    <h4>Canh giải nhiệt</h4>
+                </div>
+            </a>
+
+            <a href="img/gallery4.jpg" class="box">
+                <img src="img/kem1.gif" alt="">
+                <div class="icon">
+                    <h4>Kem mát lạnh</h4>
+                </div>
+            </a>
+
+            <a href="img/gallery5.jpg" class="box">
+                <img src="img/gallery5.jpg" alt="">
+                <div class="icon">
+                    <h4>Soup</h4>
+                </div>
+            </a>
+
+            <a href="img/gallery6.jpg" class="box">
+                <img src="img/gallery6.jpg" alt="">
+                <div class="icon">
+                    <h4>Sinh tố trái cây</h4>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- start chi tiet phan loai -->
+
+        <section class="container">
+            <div class="row">
+                <div class="col-md-4" id="boloc">
+                    <h1>Bộ Lọc</h1>
+                    <div class="item">
+                        <h3>Giá: <span id="priceValue">0</span></h3>
+                        <input type="range" class="form-range" id="priceRange" min="0" max="100" step="10">
+                    </div>
+                    <div class="item">
+                        <h3>Công dụng</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="ngon" id="ngonCheckbox">
+                            <label class="form-check-label" for="ngonCheckbox">
+                                Thơm ngon
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="nhanh" id="nhanhCheckbox">
+                            <label class="form-check-label" for="nhanhCheckbox">
+                                Nhanh chóng
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="gnhiet" id="gnhietCheckbox">
+                            <label class="form-check-label" for="gnhietCheckbox">
+                                Giải nhiệt
+                            </label>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <h3>Phân loại</h3>
+                        <select class="form-select" id="categorySelect">
+                            <option value="all">Tất cả</option>
+                            <option value="salad">Salad</option>
+                            <option value="mc">Món chính</option>
+                            <option value="canh">Canh</option>
+                            <option value="tm">Tráng miệng</option>
+                        </select>
+                    </div>
+                    <div class="btnloc">
+                        <button class="btn btn-primary mt-3" id="filterButton">Lọc</button>
+                    </div>
+                </div>
+                <div class="col-md-8" id="foodmenu">
+
+                    <h1>Food Menu</h1>
+
+                    <div id="foodList" class="row">
+                        <div class="col-md-4 monan" name="food-1">
+                            <div class="card" data-category="salad" data-price="20" data-attributes="ngon nhanh gnhiet">
+                                <img src="img/about1.png">
+                                <h3>Salad</h3>
+                                <div class="price">$20</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 monan" name="food-2">
+                            <div class="card" data-category="canh" data-price="50" data-attributes="ngon gnhiet">
+                                <img src="img/food2.png" alt="">
+                                <h3>Canh lươn um chuối</h3>
+                                <div class="price">$50</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 monan" name="food-3">
+                            <div class="card" data-category="canh" data-price="40" data-attributes="ngon nhanh gnhiet">
+                                <img src="img/food1.png" alt="">
+                                <h3>Canh chua cá lóc</h3>
+                                <div class="price">$40</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 monan" name="food-4">
+                            <div class="card" data-category="salad" data-price="60" data-attributes="nhanh ngon">
+                                <img src="img/salad2.jpg" alt="">
+                                <h3>Gỏi hải sản</h3>
+                                <div class="price">$60</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 monan" name="food-5">
+                            <div class="card" data-category="mc" data-price="70" data-attributes="ngon">
+                                <img src="img/food4.png" alt="">
+                                <h3>Thịt ba chỉ kho</h3>
+                                <div class="price">$70</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 monan" name="food-6">
+                            <div class="card" data-category="mc" data-price="60" data-attributes="gnhiet ngon">
+                                <img src="img/gallery2.png" alt="">
+                                <h3>Cá hấp</h3>
+                                <div class="price">$60</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="food-preview-container">
+
+            <div id="close-preview" class="fas fa-times"></div>
+
+            <div class="food-preview " data-target="food-1">
+                <img src="img/about1.png" alt="">
+                <h3>Salad rau củ</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Là một trong những món ăn giải nhiệt tốt cho mùa hè này</p>
+                <div class="price">$20</div>
+                <a href="#contact" class="btn">Buy now</a>
+            </div>
+
+            <div class="food-preview" data-target="food-2">
+                <img src="img/food2.png" alt="">
+                <h3>Canh chuối um lươn</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Vị bùi bùi mềm mềm của chuối cộng thêm dai dai của lươn làm món ăn thêm ngon</p>
+                <div class="price">$50</div>
+                <a href="#contact" class="btn">Buy now</a>
+            </div>
+
+            <div class="food-preview" data-target="food-3">
+                <img src="img/food1.png" alt="">
+                <h3>Canh chua cá lóc</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Canh giải nhiệt tốt nhất là đây</p>
+                <div class="price">$40</div>
+                <a href="#contact" class="btn">Buy now</a>
+            </div>
+
+            <div class="food-preview" data-target="food-4">
+                <img src="img/salad2.jpg" alt="">
+                <h3>Gỏi hải sản</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Gỏi hải sản tươi ngon</p>
+                <div class="price">$60</div>
+                <a href="#contact" class="btn">Buy now</a>
+            </div>
+
+            <div class="food-preview" data-target="food-5">
+                <img src="img/food4.png" alt="">
+                <h3>Thịt ba chỉ kho</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Thịt ba chỉ kho chỉ có tốn cơm</p>
+                <div class="price">$70</div>
+                <a href="#contact" class="btn">Buy now</a>
+            </div>
+
+            <div class="food-preview" data-target="food-6">
+                <img src="img/gallery2.png" alt="">
+                <h3>Cá hấp</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Cá hấp mềm, thơm, ngon ngọt</p>
+                <div class="price">$60</div>
+                <a href="#contact" class="btn">Buy now</a>
+            </div>
+        </section>
+
+        <!-- (con cua popular) -->
+        <!-- ends chi tiet phan loai -->
+
+
+    </section>
+
+
+
+    <!-- phan loai food section ends -->
+
+    <!-- phân loại drink starts -->
+    <section class="pldrink" id="pldrink">
+
+        <div class="heading">
+            <span>Phân loại đồ uống</span>
+            <h3>Các loại đồ uống có trong thực đơn</h3>
+        </div>
+
+        <div class="row g-0">
+            <div class=" col-sm-3">
+                <div class="insta-post">
+                    <img src="img/blogs2.jpg" alt="">
+                    <div class="insta-btn">
+                        <span>Chè</span>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-sm-3">
+                <div class="insta-post">
+                    <img src="img/coffee1.jpg" alt="">
+                    <div class="insta-btn">
+                        <span>Coffee</span>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-sm-3">
+                <div class="insta-post">
+                    <img src="img/blogs4.jpg" alt="">
+                    <div class="insta-btn">
+                        <span>juice</span>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-sm-3">
+                <div class="insta-post">
+                    <img src="img/kem2.png" alt="">
+                    <div class="insta-btn">
+                        <span>Kem</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- chi tiet phan loai starts -->
+
+
+    <!-- button-->
+    <section id="chitiet" class="bg-light">
+
+        <div class="container">
+            <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link  active" id="pills-all-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all"
+                        aria-selected="true">All </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-coffee-tab" data-bs-toggle="pill" data-bs-target="#pills-coffee"
+                        type="button" role="tab" aria-controls="pills-coffee" aria-selected="true">Coffee <i
+                            class="fas fa-duotone fa-mug-hot"></i></button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-juice-tab" data-bs-toggle="pill" data-bs-target="#pills-juice"
+                        type="button" role="tab" aria-controls="pills-juice" aria-selected="true">Juice <i
+                            class="fa-duotone fa-citrus-slice"></i></button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-ice-tab" data-bs-toggle="pill" data-bs-target="#pills-ice"
+                        type="button" role="tab" aria-controls="pills-ice" aria-selected="true">Ice Cream <i
+                            class="fas fa-regular fa-ice-cream"></i></button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-cake-tab" data-bs-toggle="pill" data-bs-target="#pills-cake"
+                        type="button" role="tab" aria-controls="pills-cake" aria-selected="true">Cake <i
+                            class="fa-light fa-cake-slice"></i></button>
+                </li>
+
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+
+                <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab"
+                    tabindex="0">
+
+                    <div class="row gy-4">
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/drink1.png" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Nước ép cà chua</a></h3>
+                                    <p class="small">Mát lạnh, tươi ngon, giàu dưỡng chất từ cà chua tươi.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">25000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/kem1.png" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Bingsu</a></h3>
+                                    <p class="small">Đá xay mịn, topping phong phú, tráng miệng mát lạnh.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">55000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/coffee3.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Cà phê đen đá</a></h3>
+                                    <p class="small">Mát lạnh, đậm đà, thức uống phổ biến.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">15000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/gallery4.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">
+                                            Dino Ice Cream</a></h3>
+                                    <p class="small">Kem hình khủng long, vị ngon, thú vị cho mọi lứa tuổi.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">20000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/gallery6.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Strawberry smoothie</a></h3>
+                                    <p class="small">Mượt mà, thơm ngon từ trái dâu tây tươi.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">27000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/slide3.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Strawberry mojito</a></h3>
+                                    <p class="small"> Mát lạnh, hương vị dâu tây tươi kết hợp với hương thơm của mojito.
+                                    </p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">34000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/che1.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Chè Thái</a></h3>
+                                    <p class="small">Món chè truyền thống Thái Lan, ngọt mát, đa dạng topping và hương
+                                        vị độc đáo.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">22000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/cake.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Bánh Bông Lan</a></h3>
+                                    <p class="small">Mềm mịn, hương thơm nhẹ nhàng, món bánh truyền thống phổ biến.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">32000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade show" id="pills-coffee" role="tabpanel" aria-labelledby="pills-coffee-tab"
+                    tabindex="0">
+                    <div class="row gy-4">
+
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/coffee1.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Cà phê Latte</a></h3>
+                                    <p class="small">Tạo hình tinh tế, trang trí cầu kỳ trên cà phê, tạo cảm giác thẩm
+                                        mỹ độc đáo.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">39000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/coffee2.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Cà phê Salep</a></h3>
+                                    <p class="small">Kết hợp độc đáo giữa cà phê và hương vị truyền thống từ Salep, mang
+                                        đến hương thơm đặc trưng và cảm giác ấm áp.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">35000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/coffee3.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Cà Phê Đen Đá</a></h3>
+                                    <p class="small">Mát Lạnh, Đậm Đà, Thức Uống Phổ Biến.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">15000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show" id="pills-juice" role="tabpanel" aria-labelledby="pills-juice-tab"
+                    tabindex="0">
+                    <div class="row gy-4">
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/gallery6.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Strawberry smoothie</a></h3>
+                                    <p class="small">Mượt Mà, Thơm Ngon Từ Trái Dâu Tây Tươi.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">27000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/slide3.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Strawberry mojito</a></h3>
+                                    <p class="small"> Mát lạnh, hương vị dâu tây tươi kết hợp với hương thơm của mojito.
+                                    </p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">34000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/juice.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Nước ép cà rốt</a></h3>
+                                    <p class="small">Tươi ngon, giàu vitamin, màu sắc tươi sáng.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">30000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/juice2.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Nước ép Kiwi</a></h3>
+                                    <p class="small">Tươi mát, hương vị chua ngọt, giàu vitamin C.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">35000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/juice3.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Nước ép ổi</a></h3>
+                                    <p class="small">Mát lạnh, hương vị đặc trưng, giàu chất chống oxy hóa.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">27000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show" id="pills-ice" role="tabpanel" aria-labelledby="pills-ice-tab"
+                    tabindex="0">
+                    <div class="row gy-4">
+
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/kem1.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Kem BUD'S</a></h3>
+                                    <p class="small">Kem mát lạnh, đa dạng vị, ngon lành từ thương hiệu BUD'S.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">45000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/kem1.png" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Bingsu</a></h3>
+                                    <p class="small">Đá xay mịn, topping phong phú, tráng miệng mát lạnh.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">55000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/kem2.png" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Strawberry bingsu</a></h3>
+                                    <p class="small">Bingsu ngọt ngào, trái cây tươi, hương vị dâu tây thơm ngon.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">39000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/kem3.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Kem que nước</a></h3>
+                                    <p class="small">Kem lạnh, que mát, hương vị thơm ngon.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">15000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/kem4.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Kem cuộn</a></h3>
+                                    <p class="small">Mát lạnh, hình dạng cuộn độc đáo, hương vị ngon lành.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">29000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/kem2.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Kem Gelato</a></h3>
+                                    <p class="small">Mát lạnh, kem đặc, hương vị đa dạng, phong cách Ý.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">29000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show" id="pills-cake" role="tabpanel" aria-labelledby="pills-cake-tab"
+                    tabindex="0">
+                    <div class="row gy-4">
+
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/cake.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Bánh Bông Lan</a></h3>
+                                    <p class="small">Mềm mịn, hương thơm nhẹ nhàng, món bánh truyền thống phổ biến.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">32000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img src="img/cake1.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Fruit Jelly pudding</a></h3>
+                                    <p class="small">Mát lạnh, trái cây tươi, thạch trái cây ngon lành.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">29000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/cake2.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Thạch bi trái cây</a></h3>
+                                    <p class="small">Mát lạnh, màu sắc bắt mắt, hương vị trái cây tươi ngon.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">28000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 detail">
+                            <div class="menu-item bg-white shadow-on-hover">
+                                <img class="img-prd" src="img/cake3.jpg" alt="">
+                                <div class="menu-item-content p-4">
+                                    <div>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                            <i class="fa-solid fa-star" style="color: #f5d63d;"></i>
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-1 mb-2"><a href="#">Bánh pudding</a></h3>
+                                    <p class="small">Mềm mịn, hương vị đa dạng, món tráng miệng thú vị.</p>
+                                    <div class="content-product-deltals">
+                                        <div class="price">
+                                            <span class="money">39000đ</span>
+                                        </div>
+                                        <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- ends chi tiet phan loai -->
+
+    <!-- phân loại drink ends -->
+
+    <section class="contact" id="contact">
+        <div class="heading">
+            <span>Đặt món</span>
+            <h3>Đặt hàng online tại đây!</h3>
+        </div>
+
+        <form action="">
+            <div class="box-container">
+                <div class="box">
+                    <div class="inputBox">
+                        <span>Tên của bạn</span>
+                        <input type="text" placeholder="Nhập tên" required>
+                    </div>
+                    <div class="inputBox">
+                        <span>Tên món ăn</span>
+                        <input type="text" placeholder="Nhập tên món bạn chọn" required>
+                    </div>
+                    <div class="inputBox">
+                        <span>Chi tiết yêu cầu</span>
+                        <input type="text" placeholder="Chi tiết">
+                    </div>
+                    <div class="inputBox">
+                        <span>Địa chỉ</span>
+                        <textarea name="" placeholder="Nhập địa chỉ của bạn" id="" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="inputBox">
+                        <span>Số điện thoại</span>
+                        <input type="number" placeholder="SDT" required>
+                    </div>
+                    <div class="inputBox">
+                        <span>Số lượng</span>
+                        <input type="number" placeholder="Chọn số lượng" required>
+                    </div>
+                    <div class="inputBox">
+                        <span>Giờ giao hàng</span>
+                        <input type="datetime-local" placeholder="Chọn giờ giao" required>
+                    </div>
+                    <input type="submit" value="order now" class="btn">
+                </div>
+            </div>
+        </form>
+    </section>
+    <!-- order section ends -->
+
+
+
+
+
+    <!-- footer sectin starts -->
+
+    <section class="footer" id="footer">
+        <div class="icons-container">
+
+            <div class="icons">
+                <i class="fas fa-clock"></i>
+                <h3>Mở cửa</h3>
+                <p>07:00am to 10:00pm</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-phone"></i>
+                <h3>Điện thoại</h3>
+                <p>+84 123456789</p>
+                <p>0987-654-321</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-envelope"></i>
+                <h3>email</h3>
+                <p>thuongtt.22it@vku.udn.vn</p>
+                <p>truongthuongqb1008@gmail.com</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Địa chỉ</h3>
+                <p>Trường Đại học CNTT&TT Việt - Hàn</p>
+                <p>470 Trần Đại Nghĩa, Khu Đô Thị Đại Học, Quận Ngũ Hành Sơn, Tp Đà Nẵng.</p>
+            </div>
+        </div>
+
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+        </div>
+
+        <div class="credit">
+            created by <span> Thuong designer</span> | all right reserved!
+        </div>
+    </section>
+
+
+
+    <!-- footer sectin ends -->
+
+
+
+
+
+
+
+    <!--link file js  -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+
+    <!-- js bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+    <script src="js/index.js"></script>
+    <script src="js/fooddetail.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        lightGallery(document.querySelector('.gallery .gallery-container'));
+    </script>
+
+    <script>
+        //search
+        let searchBtn = document.querySelector('#search-btn');
+        let searchBar = document.querySelector('.search-bar-container');
+
+        window.onscroll = () => {
+            searchBtn.classList.remove('fa-times');
+            searchBar.classList.remove('active');
+        }
+
+        searchBtn.addEventListener('click', () => {
+            searchBtn.classList.toggle('fa-times');
+            searchBar.classList.toggle('active');
+        });
+
+        // order
+        let orderBtn = document.querySelector('#order-btn');
+        let orderForm = document.querySelector('.order');
+        let orderformClose = document.querySelector('#order-form-close');
+
+        orderBtn.addEventListener('click', () => {
+            orderForm.classList.add('active');
+        });
+
+        orderformClose.addEventListener('click', () => {
+            orderForm.classList.remove('active');
+        });
+    </script>
+
+</body>
+
+</html>
